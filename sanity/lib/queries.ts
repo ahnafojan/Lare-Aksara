@@ -1,0 +1,49 @@
+import {groq} from 'next-sanity'
+
+export const PROGRAMS_QUERY = groq`
+  *[_type == "program"] | order(judul asc) {
+    _id,
+    judul,
+    deskripsi,
+    slug,
+    gambar {
+      asset-> {
+        _id,
+        url
+      }
+    }
+  }
+`
+
+export const EVENTS_QUERY = groq`
+  *[_type == "event"] | order(tanggal desc) {
+    _id,
+    namaEvent,
+    tanggal,
+    lokasi,
+    deskripsi,
+    slug
+  }
+`
+
+export const EVENT_BY_SLUG_QUERY = groq`
+  *[_type == "event" && slug.current == $slug][0] {
+    _id,
+    namaEvent,
+    tanggal,
+    lokasi,
+    deskripsi,
+    slug,
+    kegiatan[] {
+      _key,
+      judulKegiatan,
+      deskripsiSingkat,
+      gambar {
+        asset-> {
+          _id,
+          url
+        }
+      }
+    }
+  }
+`
