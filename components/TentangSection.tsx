@@ -27,23 +27,28 @@ const tujuan = [
 export default function TentangSection() {
   return (
     <section id="tentang" className="bg-white px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-16 xl:px-8">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div className="lg:sticky lg:top-28">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:gap-12">
+        <div className="lg:sticky lg:top-28 lg:pt-2">
           <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1D9E75] bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56]">
             Tentang
           </span>
-          <h2 className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl">
+          <h2 className="font-heading mt-5 max-w-xl text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl lg:text-6xl">
             Ruang kata, nada, dan warna untuk anak.
           </h2>
-          <div className="mt-8">
+          <p className="mt-5 hidden max-w-md text-base leading-8 text-[#5F5E5A] lg:block">
+            Komunitas ini tumbuh dari lapak buku sederhana menjadi ruang
+            kreatif yang merawat keberanian anak untuk membaca, bernyanyi,
+            menggambar, dan bercerita.
+          </p>
+          <div className="mt-8 lg:max-w-sm">
             <BookStackIllustration />
           </div>
         </div>
 
-        <div className="space-y-8">
-          <article className="soft-card bg-white p-5 sm:p-6 md:p-8">
+        <div className="space-y-8 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:space-y-0">
+          <article className="soft-card bg-white p-5 sm:p-6 md:p-8 lg:col-span-2">
             <h3 className="font-heading text-2xl text-[#04342C]">Tentang</h3>
-            <div className="mt-4 space-y-4 text-base leading-8 text-[#5F5E5A]">
+            <div className="mt-4 space-y-4 text-base leading-8 text-[#5F5E5A] lg:columns-2 lg:gap-8">
               <p>
                 Lare Aksara adalah komunitas literasi indie yang berfokus pada
                 anak dan peduli terhadap perkembangan kesenian anak. Kami hadir
@@ -63,7 +68,7 @@ export default function TentangSection() {
             </div>
           </article>
 
-          <article className="soft-card bg-[#E1F5EE] p-5 sm:p-6 md:p-8">
+          <article className="soft-card bg-[#E1F5EE] p-5 sm:p-6 md:p-8 lg:min-h-full">
             <h3 className="font-heading text-2xl text-[#04342C]">Perjalanan</h3>
             <div className="mt-4 space-y-4 text-base leading-8 text-[#5F5E5A]">
               <p>
@@ -87,7 +92,7 @@ export default function TentangSection() {
             </div>
           </article>
 
-          <article className="soft-card bg-white p-5 sm:p-6 md:p-8">
+          <article className="soft-card bg-white p-5 sm:p-6 md:p-8 lg:min-h-full">
             <h3 className="font-heading text-2xl text-[#04342C]">Tujuan</h3>
             <p className="mt-4 text-base leading-8 text-[#5F5E5A]">
               Lare Aksara bertujuan menghadirkan ruang kreatif yang ramah dan
@@ -104,9 +109,15 @@ export default function TentangSection() {
               {tujuan.map((item) => (
                 <li
                   key={item}
-                  className="rounded-lg border-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 font-bold text-[#04342C]"
+                  className="flex items-start gap-3 rounded-lg border-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 text-[#04342C] shadow-[1px_1px_0_#9FE1CB]"
                 >
-                  {item}
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.55rem] h-2.5 w-2.5 shrink-0 border-[1.5px] border-[#04342C] bg-[#5DCAA5] shadow-[1px_1px_0_#04342C]"
+                  />
+                  <span className="text-sm font-semibold leading-7 sm:text-base">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>

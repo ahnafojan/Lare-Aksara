@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const joinMailHref =
+  "mailto:aksaralare@gmail.com?subject=Gabung%20ikut%20komunitas";
+
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden border-b-[1.5px] border-[#04342C]">
@@ -20,7 +23,7 @@ export default function HeroSection() {
             Banjarnegara, 27 Desember 2025
           </span>
           <h1 className="font-heading text-3xl leading-[1.08] text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            Meromantiskan Literasi & Kesenian pada anak-anak.
+            Meromantisasi Literasi & Kesenian Pada Anak-anak
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-8 text-white sm:text-lg">
             Lare Aksara adalah komunitas literasi indie yang berfokus pada anak
@@ -31,12 +34,12 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 lg:flex-row">
-            <Link
-              href="/#donasi"
+            <a
+              href={joinMailHref}
               className="focus-soft inline-flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-6 py-3 font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
             >
               Gabung sekarang -&gt;
-            </Link>
+            </a>
             <Link
               href="/#event"
               className="focus-soft inline-flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-white bg-white px-6 py-3 font-black text-[#04342C] shadow-[2px_2px_0_#9FE1CB] transition-transform hover:-translate-y-0.5"
@@ -55,6 +58,7 @@ export default function HeroSection() {
                 fill
                 className="object-cover object-center"
                 sizes="(min-width: 1024px) 38vw, 100vw"
+                priority
               />
             </div>
           </div>

@@ -1,14 +1,12 @@
 import EventSection from "@/components/EventSection";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { client } from "@/sanity/lib/client";
-import { EVENTS_QUERY } from "@/sanity/lib/queries";
-import type { EventSummary } from "@/types";
+import { getEvents } from "@/sanity/lib/fetchers";
 
 export const dynamic = "force-dynamic";
 
 export default async function EventPage() {
-  const events = await client.fetch<EventSummary[]>(EVENTS_QUERY);
+  const events = await getEvents();
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">

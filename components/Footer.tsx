@@ -32,7 +32,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto mt-8 w-full max-w-7xl border-t-[1.5px] border-[#5DCAA5] pt-5 text-center text-base text-[#E1F5EE] lg:text-left">
-        (c) 2026 Lare Aksara. Semua hak dirawat bersama.
+        (c) 2026 LareAksara. Semua hak dirawat bersama.
       </div>
     </footer>
   );

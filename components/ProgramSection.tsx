@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Program } from "@/types";
 
 type ProgramSectionProps = {
@@ -50,31 +51,44 @@ export default function ProgramSection({ programs }: ProgramSectionProps) {
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:mt-10 lg:gap-6">
           {programs.length > 0 ? (
-            programs.map((program) => (
-              <article key={program._id} className="soft-card overflow-hidden bg-white">
-                <div className="relative aspect-[4/3] border-b-[1.5px] border-[#04342C]">
-                  {program.gambar?.asset?.url ? (
-                    <Image
-                      src={program.gambar.asset.url}
-                      alt={program.judul}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 768px) 33vw, 50vw"
-                    />
-                  ) : (
-                    <EmptyProgramImage />
-                  )}
-                </div>
-                <div className="p-3 sm:p-4 lg:p-5">
-                  <h3 className="font-heading text-xl leading-tight text-[#04342C] sm:text-2xl">
-                    {program.judul}
-                  </h3>
-                  <p className="mt-2 line-clamp-3 text-base leading-7 text-[#5F5E5A] lg:mt-3">
-                    {program.deskripsi}
-                  </p>
-                </div>
-              </article>
-            ))
+            programs.map((program) => {
+              const href = program.slug?.current
+                ? `/program/${program.slug.current}`
+                : "/#program";
+
+              return (
+                <Link
+                  key={program._id}
+                  href={href}
+                  className="focus-soft soft-card group flex min-h-11 flex-col overflow-hidden bg-white transition-transform hover:-translate-y-0.5"
+                >
+                  <div className="relative aspect-[4/3] border-b-[1.5px] border-[#04342C]">
+                    {program.gambar?.asset?.url ? (
+                      <Image
+                        src={program.gambar.asset.url}
+                        alt={program.judul}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                        sizes="(min-width: 768px) 33vw, 50vw"
+                      />
+                    ) : (
+                      <EmptyProgramImage />
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-5">
+                    <h3 className="font-heading text-xl leading-tight text-[#04342C] sm:text-2xl">
+                      {program.judul}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-base leading-7 text-[#5F5E5A] lg:mt-3">
+                      {program.deskripsi}
+                    </p>
+                    <span className="mt-auto pt-4 text-sm font-black text-[#1D9E75] group-hover:text-[#04342C] sm:text-base">
+                      Lihat detail -&gt;
+                    </span>
+                  </div>
+                </Link>
+              );
+            })
           ) : (
             <div className="soft-card col-span-2 bg-white p-6 text-base text-[#5F5E5A] md:col-span-3">
               Program Lare Aksara akan segera tampil di sini.

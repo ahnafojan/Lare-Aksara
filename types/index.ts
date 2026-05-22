@@ -15,6 +15,7 @@ export type Program = {
   deskripsi: string;
   slug?: SanitySlug;
   gambar?: SanityImage;
+  galeri?: SanityImage[];
 };
 
 export type EventSummary = {

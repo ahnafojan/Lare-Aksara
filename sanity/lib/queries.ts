@@ -15,6 +15,27 @@ export const PROGRAMS_QUERY = groq`
   }
 `
 
+export const PROGRAM_BY_SLUG_QUERY = groq`
+  *[_type == "program" && slug.current == $slug][0] {
+    _id,
+    judul,
+    deskripsi,
+    slug,
+    gambar {
+      asset-> {
+        _id,
+        url
+      }
+    },
+    galeri[] {
+      asset-> {
+        _id,
+        url
+      }
+    }
+  }
+`
+
 export const EVENTS_QUERY = groq`
   *[_type == "event"] | order(tanggal desc) {
     _id,

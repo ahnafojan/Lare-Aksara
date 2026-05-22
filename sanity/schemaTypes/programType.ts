@@ -13,12 +13,26 @@ export const programType = defineType({
     }),
     defineField({
       name: 'gambar',
-      title: 'Gambar',
+      title: 'Gambar Cover',
       type: 'image',
       options: {
         hotspot: true,
       },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'galeri',
+      title: 'Galeri Gambar',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+      description: 'Tambahkan gambar tambahan untuk slider di halaman detail program.',
     }),
     defineField({
       name: 'deskripsi',

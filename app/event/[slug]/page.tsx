@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import EventActivityGallery from "@/components/EventActivityGallery";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ShareEventButton from "@/components/ShareEventButton";
-import { client } from "@/sanity/lib/client";
-import { EVENT_BY_SLUG_QUERY } from "@/sanity/lib/queries";
-import type { EventDetail } from "@/types";
+import { getEventBySlug } from "@/sanity/lib/fetchers";
 
 type EventDetailPageProps = {
   params: Promise<{
@@ -65,30 +64,9 @@ function PinIcon() {
   );
 }
 
-function EmptyActivityImage() {
-  return (
-    <div className="flex h-full min-h-32 items-center justify-center bg-[#E1F5EE]">
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 160 120"
-        className="h-24 w-32"
-        fill="none"
-      >
-        <rect x="34" y="70" width="92" height="18" rx="6" fill="#5DCAA5" stroke="#04342C" strokeWidth="1.5" />
-        <rect x="28" y="88" width="104" height="18" rx="6" fill="#9FE1CB" stroke="#04342C" strokeWidth="1.5" />
-        <path d="M44 30C57 20 70 21 82 34V82C70 72 57 71 44 80V30Z" fill="#E1F5EE" stroke="#04342C" strokeWidth="1.5" />
-        <path d="M82 34C95 21 108 20 120 30V80C108 71 95 72 82 82V34Z" fill="#FFFFFF" stroke="#04342C" strokeWidth="1.5" />
-        <path d="M82 34V82" stroke="#04342C" strokeWidth="1.5" />
-      </svg>
-    </div>
-  );
-}
-
 export default async function EventDetailPage({ params }: EventDetailPageProps) {
   const { slug } = await params;
-  const event = await client.fetch<EventDetail | null>(EVENT_BY_SLUG_QUERY, {
-    slug,
-  });
+  const event = await getEventBySlug(slug);
 
   if (!event) {
     notFound();
@@ -150,50 +128,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 Kegiatan Dalam Event
               </p>
 
-              <div className="grid grid-cols-2 gap-2.5 md:grid-cols-2 lg:grid-cols-3">
-                {event.kegiatan && event.kegiatan.length > 0 ? (
-                  event.kegiatan.map((kegiatan) => (
-                    <article
-                      key={kegiatan._key}
-                      className="overflow-hidden rounded-lg border-[1.5px] border-[#04342C] bg-white shadow-[2px_2px_0_#04342C]"
-                    >
-                      <div className="relative aspect-video border-b-[1.5px] border-[#04342C]">
-                        {kegiatan.gambar?.asset?.url ? (
-                          <Image
-                            src={kegiatan.gambar.asset.url}
-                            alt={kegiatan.judulKegiatan}
-                            fill
-                            className="object-cover"
-                            sizes="(min-width: 1024px) 24vw, (min-width: 768px) 50vw, 100vw"
-                          />
-                        ) : (
-                          <EmptyActivityImage />
-                        )}
-                      </div>
-                      <h3 className="font-heading px-2 pb-1 pt-2 text-base font-bold leading-snug text-[#04342C] sm:px-2.5 sm:text-lg">
-                        {kegiatan.judulKegiatan}
-                      </h3>
-                      <p className="line-clamp-2 px-2 pb-2 text-xs leading-[1.5] text-[#5F5E5A] sm:px-2.5 sm:pb-2.5 sm:text-sm">
-                        {kegiatan.deskripsiSingkat}
-                      </p>
-                      {kegiatan.linkKegiatan ? (
-                        <a
-                          href={kegiatan.linkKegiatan}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mx-2 mb-2 inline-flex min-h-11 items-center justify-center rounded-md border-[1.5px] border-[#04342C] bg-[#1D9E75] px-2 text-center text-xs font-black leading-tight text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5 sm:mx-2.5 sm:mb-2.5 sm:px-3 sm:text-sm"
-                        >
-                          Dokumentasi -&gt;
-                        </a>
-                      ) : null}
-                    </article>
-                  ))
-                ) : (
-                  <div className="rounded-lg border-[1.5px] border-[#04342C] bg-[#E1F5EE] p-4 text-[14px] text-[#5F5E5A] md:col-span-2 lg:col-span-3">
-                    Rincian kegiatan untuk event ini akan segera tampil.
-                  </div>
-                )}
-              </div>
+              <EventActivityGallery kegiatan={event.kegiatan} />
             </section>
           </div>
 

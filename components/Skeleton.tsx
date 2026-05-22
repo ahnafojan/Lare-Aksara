@@ -51,11 +51,10 @@ export function EventDetailSkeleton() {
   return (
     <div className="min-h-screen overflow-hidden bg-white">
       <div className="h-20 border-b-[1.5px] border-[#04342C] bg-white" />
-      <div className="flex items-center justify-between border-b-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 sm:px-6 md:px-8 lg:px-16 xl:px-8">
-        <SkeletonBlock className="h-9 w-36 rounded-full bg-white/70" />
-        <SkeletonBlock className="h-8 w-32 bg-[#1D9E75]/70" />
+      <div className="border-b-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 sm:px-6 md:px-8 lg:px-16 xl:px-8">
+        <SkeletonBlock className="h-11 w-44 rounded-full bg-white/70" />
       </div>
-      <section className="flex min-h-[60vh] items-end bg-[#04342C] px-4 py-10 sm:px-6 md:px-8 lg:px-16 xl:px-8">
+      <section className="flex min-h-[60vh] items-end bg-black px-4 py-10 sm:px-6 md:px-8 lg:px-16 xl:px-8">
         <div className="w-full max-w-4xl">
           <SkeletonBlock className="h-16 w-full max-w-3xl bg-white/25 md:h-24" />
           <SkeletonBlock className="mt-4 h-5 w-56 bg-white/25" />
@@ -63,10 +62,10 @@ export function EventDetailSkeleton() {
       </section>
       <section className="grid md:grid-cols-[1fr_280px]">
         <div className="order-2 p-6 md:order-1 md:border-r-[1.5px] md:border-[#04342C]">
-          <SkeletonBlock className="h-4 w-40" />
+          <SkeletonBlock className="h-5 w-40" />
           <SkeletonBlock className="mt-4 h-28 w-full" />
-          <div className="mt-10 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 3 }).map((_, index) => (
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 4 }).map((_, index) => (
               <SkeletonBlock key={index} className="aspect-[4/3]" />
             ))}
           </div>

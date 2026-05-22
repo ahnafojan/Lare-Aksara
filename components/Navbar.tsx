@@ -11,6 +11,9 @@ const menuItems = [
   { label: "Donasi", href: "/#donasi" },
 ];
 
+const joinMailHref =
+  "mailto:aksaralare@gmail.com?subject=Gabung%20ikut%20komunitas";
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -59,12 +62,12 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Link
-          href="/#donasi"
+        <a
+          href={joinMailHref}
           className="focus-soft hidden min-h-11 items-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-5 text-base font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5 md:inline-flex"
         >
           Bergabung
-        </Link>
+        </a>
       </nav>
 
       {isOpen ? (
@@ -83,13 +86,13 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/#donasi"
+            <a
+              href={joinMailHref}
               className="focus-soft mt-2 flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-4 font-black text-white shadow-[2px_2px_0_#04342C]"
               onClick={() => setIsOpen(false)}
             >
               Bergabung
-            </Link>
+            </a>
           </div>
         </div>
       ) : null}

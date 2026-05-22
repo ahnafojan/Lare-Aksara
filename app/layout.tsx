@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../public/fonts/inter-latin.woff2",
   display: "swap",
   variable: "--font-inter",
+  weight: "100 900",
 });
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
+const playfairDisplay = localFont({
+  src: "../public/fonts/playfair-latin.woff2",
   display: "swap",
   variable: "--font-playfair-display",
-  weight: ["700", "900"],
+  weight: "700 900",
 });
 
 export const metadata: Metadata = {
@@ -30,8 +31,11 @@ export default function RootLayout({
     <html
       lang="id"
       className={`${inter.variable} ${playfairDisplay.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

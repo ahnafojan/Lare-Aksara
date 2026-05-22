@@ -6,16 +6,14 @@ import Navbar from "@/components/Navbar";
 import ProgramSection from "@/components/ProgramSection";
 import StatsBar from "@/components/StatsBar";
 import TentangSection from "@/components/TentangSection";
-import { client } from "@/sanity/lib/client";
-import { EVENTS_QUERY, PROGRAMS_QUERY } from "@/sanity/lib/queries";
-import type { EventSummary, Program } from "@/types";
+import { getEvents, getPrograms } from "@/sanity/lib/fetchers";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const [programs, events] = await Promise.all([
-    client.fetch<Program[]>(PROGRAMS_QUERY),
-    client.fetch<EventSummary[]>(EVENTS_QUERY),
+    getPrograms(),
+    getEvents(),
   ]);
 
   return (
