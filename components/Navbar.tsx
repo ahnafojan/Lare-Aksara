@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const menuItems = [
   { label: "Tentang", href: "/#tentang" },
@@ -16,9 +16,56 @@ const joinMailHref =
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const isOpenRef = useRef(false);
+  const lastScrollY = useRef(0);
+  const scrollFrame = useRef<number | null>(null);
+
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
+    const handleScroll = () => {
+      if (scrollFrame.current !== null) {
+        return;
+      }
+
+      scrollFrame.current = window.requestAnimationFrame(() => {
+        const currentScrollY = Math.max(window.scrollY, 0);
+        const isScrollingDown = currentScrollY > lastScrollY.current;
+        const shouldHide =
+          isScrollingDown && currentScrollY > 96 && !isOpenRef.current;
+
+        setIsHidden((currentValue) =>
+          currentValue === shouldHide ? currentValue : shouldHide,
+        );
+        lastScrollY.current = currentScrollY;
+        scrollFrame.current = null;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (scrollFrame.current !== null) {
+        window.cancelAnimationFrame(scrollFrame.current);
+      }
+    };
+  }, []);
+
+  const shouldHideNavbar = isHidden && !isOpen;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b-[1.5px] border-[#04342C] bg-white/95 backdrop-blur">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b-[1.5px] border-[#04342C] bg-white/95 backdrop-blur transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        shouldHideNavbar ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 md:px-8 lg:px-16 xl:px-8">
         <Link
           href="/"
