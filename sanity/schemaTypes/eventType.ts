@@ -24,6 +24,15 @@ export const eventType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'gambar',
+      title: 'Gambar Event',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'deskripsi',
       title: 'Deskripsi',
       type: 'text',
@@ -72,6 +81,17 @@ export const eventType = defineType({
               rows: 3,
               validation: (rule) => rule.required(),
             }),
+            defineField({
+              name: 'linkKegiatan',
+              title: 'Link Kegiatan',
+              type: 'url',
+              description: 'Opsional. Isi dengan link dokumentasi seperti YouTube, Instagram, atau platform lain.',
+              validation: (rule) =>
+                rule.uri({
+                  scheme: ['http', 'https'],
+                  allowRelative: false,
+                }),
+            }),
           ],
           preview: {
             select: {
@@ -88,6 +108,7 @@ export const eventType = defineType({
     select: {
       title: 'namaEvent',
       subtitle: 'tanggal',
+      media: 'gambar',
     },
   },
 })

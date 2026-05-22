@@ -7,7 +7,7 @@ type ProgramSectionProps = {
 
 function EmptyProgramImage() {
   return (
-    <div className="flex h-full min-h-56 items-center justify-center bg-[#E1F5EE]">
+    <div className="flex h-full min-h-28 items-center justify-center bg-[#E1F5EE] sm:min-h-40">
       <svg
         aria-hidden="true"
         viewBox="0 0 160 120"
@@ -25,18 +25,30 @@ function EmptyProgramImage() {
 
 export default function ProgramSection({ programs }: ProgramSectionProps) {
   return (
-    <section id="program" className="border-y-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-7xl">
+    <section
+      id="program"
+      className="relative overflow-hidden border-y-[1.5px] border-[#04342C] px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-16 xl:px-8"
+    >
+      <Image
+        src="/images/lare.JPG"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-[#04342C]/68" />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-3xl">
-          <span className="inline-flex rounded-full border-[1.5px] border-[#1D9E75] bg-white px-4 py-2 text-sm font-black text-[#0F6E56]">
+          <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
             Program
           </span>
-          <h2 className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-5xl">
+          <h2 className="font-heading mt-5 text-3xl leading-tight text-white sm:text-4xl md:text-5xl">
             Kegiatan yang menumbuhkan rasa ingin tahu.
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:mt-10 lg:gap-6">
           {programs.length > 0 ? (
             programs.map((program) => (
               <article key={program._id} className="soft-card overflow-hidden bg-white">
@@ -47,24 +59,24 @@ export default function ProgramSection({ programs }: ProgramSectionProps) {
                       alt={program.judul}
                       fill
                       className="object-cover"
-                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      sizes="(min-width: 768px) 33vw, 50vw"
                     />
                   ) : (
                     <EmptyProgramImage />
                   )}
                 </div>
-                <div className="p-5">
-                  <h3 className="font-heading text-2xl leading-tight text-[#04342C]">
+                <div className="p-3 sm:p-4 lg:p-5">
+                  <h3 className="font-heading text-xl leading-tight text-[#04342C] sm:text-2xl">
                     {program.judul}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#5F5E5A]">
+                  <p className="mt-2 line-clamp-3 text-base leading-7 text-[#5F5E5A] lg:mt-3">
                     {program.deskripsi}
                   </p>
                 </div>
               </article>
             ))
           ) : (
-            <div className="soft-card bg-white p-6 text-[#5F5E5A] md:col-span-2 lg:col-span-3">
+            <div className="soft-card col-span-2 bg-white p-6 text-base text-[#5F5E5A] md:col-span-3">
               Program Lare Aksara akan segera tampil di sini.
             </div>
           )}

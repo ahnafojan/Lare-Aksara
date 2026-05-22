@@ -26,13 +26,13 @@ const tujuan = [
 
 export default function TentangSection() {
   return (
-    <section id="tentang" className="bg-white px-4 py-20 sm:px-6 lg:px-8">
+    <section id="tentang" className="bg-white px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-16 xl:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div className="lg:sticky lg:top-28">
-          <span className="inline-flex rounded-full border-[1.5px] border-[#1D9E75] bg-[#E1F5EE] px-4 py-2 text-sm font-black text-[#0F6E56]">
+          <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1D9E75] bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56]">
             Tentang
           </span>
-          <h2 className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-5xl">
+          <h2 className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl">
             Ruang kata, nada, dan warna untuk anak.
           </h2>
           <div className="mt-8">
@@ -41,7 +41,7 @@ export default function TentangSection() {
         </div>
 
         <div className="space-y-8">
-          <article className="soft-card bg-white p-6 sm:p-8">
+          <article className="soft-card bg-white p-5 sm:p-6 md:p-8">
             <h3 className="font-heading text-2xl text-[#04342C]">Tentang</h3>
             <div className="mt-4 space-y-4 text-base leading-8 text-[#5F5E5A]">
               <p>
@@ -49,16 +49,12 @@ export default function TentangSection() {
                 anak dan peduli terhadap perkembangan kesenian anak. Kami hadir
                 sebagai ruang tumbuh yang menggabungkan literasi dan seni dalam
                 suasana yang hangat, kreatif, dan membebaskan.
-              </p>
-              <p>
                 Berangkat dari semangat kemandirian dan gerakan akar rumput,
                 Lare Aksara membangun kegiatan seperti kelas literasi,
                 musikalisasi puisi, paduan suara anak, serta eksplorasi seni
                 rupa dan menggambar. Kami percaya bahwa seni dan literasi adalah
                 fondasi penting dalam membentuk karakter, imajinasi, serta
                 kepekaan sosial anak-anak.
-              </p>
-              <p>
                 Bagi kami, anak bukan hanya peserta kegiatan, tetapi subjek
                 kreatif yang memiliki suara, warna, dan gagasan yang patut
                 dihargai. Lare Aksara adalah ruang di mana kata dirawat, nada
@@ -67,7 +63,7 @@ export default function TentangSection() {
             </div>
           </article>
 
-          <article className="soft-card bg-[#E1F5EE] p-6 sm:p-8">
+          <article className="soft-card bg-[#E1F5EE] p-5 sm:p-6 md:p-8">
             <h3 className="font-heading text-2xl text-[#04342C]">Perjalanan</h3>
             <div className="mt-4 space-y-4 text-base leading-8 text-[#5F5E5A]">
               <p>
@@ -77,15 +73,11 @@ export default function TentangSection() {
                 sederhana, tanpa panggung, tanpa banyak rencana besar. Hanya
                 buku-buku yang dibuka, anak-anak yang datang dengan rasa ingin
                 tahu, dan percakapan kecil yang tumbuh begitu saja.
-              </p>
-              <p>
                 Dari pertemuan-pertemuan itu, lahir ruang yang pelan-pelan
                 berkembang. Bukan sekadar membaca, tetapi juga berbagi cerita,
                 bernyanyi bersama, memainkan nada, hingga menggambar bersama.
                 Ruang yang terus bergerak, menstimulasi minat dan imajinasi
                 anak-anak yang terlibat di dalamnya.
-              </p>
-              <p>
                 Lare Aksara tumbuh sebagai komunitas literasi indie yang
                 berjalan secara mandiri dan nirlaba. Kami bergerak dari semangat
                 kebersamaan dan kepedulian, merawat ruang kreatif ini dengan
@@ -95,7 +87,7 @@ export default function TentangSection() {
             </div>
           </article>
 
-          <article className="soft-card bg-white p-6 sm:p-8">
+          <article className="soft-card bg-white p-5 sm:p-6 md:p-8">
             <h3 className="font-heading text-2xl text-[#04342C]">Tujuan</h3>
             <p className="mt-4 text-base leading-8 text-[#5F5E5A]">
               Lare Aksara bertujuan menghadirkan ruang kreatif yang ramah dan

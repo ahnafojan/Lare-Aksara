@@ -24,6 +24,7 @@ export type EventSummary = {
   lokasi: string;
   deskripsi: string;
   slug?: SanitySlug;
+  gambar?: SanityImage;
 };
 
 export type EventActivity = {
@@ -31,6 +32,7 @@ export type EventActivity = {
   judulKegiatan: string;
   gambar?: SanityImage;
   deskripsiSingkat: string;
+  linkKegiatan?: string;
 };
 
 export type EventDetail = EventSummary & {

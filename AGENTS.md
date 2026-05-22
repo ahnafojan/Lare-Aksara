@@ -59,7 +59,7 @@ Warna ilustrasi mengikuti palet tosca. Stroke `#04342C`, stroke-width `1.5`.
 **Section urutan dari atas ke bawah:**
 
 1. **Navbar**
-   - Logo + nama "LAREAKSARA" (monospace)
+   - Logo + nama "LARE AKSARA" (monospace)
    - Logo di /public/images/logo.png
    - Menu: Tentang, Program, Event, Donasi
    - Button "Bergabung" (primary)

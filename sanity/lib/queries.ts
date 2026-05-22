@@ -22,7 +22,13 @@ export const EVENTS_QUERY = groq`
     tanggal,
     lokasi,
     deskripsi,
-    slug
+    slug,
+    gambar {
+      asset-> {
+        _id,
+        url
+      }
+    }
   }
 `
 
@@ -34,10 +40,17 @@ export const EVENT_BY_SLUG_QUERY = groq`
     lokasi,
     deskripsi,
     slug,
+    gambar {
+      asset-> {
+        _id,
+        url
+      }
+    },
     kegiatan[] {
       _key,
       judulKegiatan,
       deskripsiSingkat,
+      linkKegiatan,
       gambar {
         asset-> {
           _id,
