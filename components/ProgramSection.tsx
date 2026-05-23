@@ -41,7 +41,7 @@ export default function ProgramSection({ programs }: ProgramSectionProps) {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-3xl">
-          <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
+          <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1a1a1a] bg-[#04342C] px-4 py-2 text-base font-black text-[#FAF9F6]">
             Program
           </span>
           <h2 className="font-heading mt-5 text-3xl leading-tight text-white sm:text-4xl md:text-5xl">

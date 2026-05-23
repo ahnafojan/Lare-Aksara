@@ -34,7 +34,7 @@ export default function ShareEventButton({ title }: ShareEventButtonProps) {
     <button
       type="button"
       onClick={handleShare}
-      className="focus-soft min-h-11 rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-3 py-2.5 text-center text-base font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
+      className="focus-soft min-h-11 rounded-lg bg-[#04342C] px-3 py-2.5 text-center text-base font-black text-white transition-opacity hover:opacity-80"
     >
       {copied ? "URL TERSALIN" : "BAGIKAN EVENT ->"}
     </button>

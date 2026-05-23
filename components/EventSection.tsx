@@ -29,7 +29,7 @@ export default function EventSection({ events }: EventSectionProps) {
       <div className="mx-auto w-full max-w-7xl">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-3xl">
-            <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1D9E75] bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56]">
+            <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1a1a1a] bg-[#04342C] px-4 py-2 text-base font-black text-[#FAF9F6]">
               Event
             </span>
             <h2 className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl">

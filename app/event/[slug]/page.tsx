@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import BackButton from "@/components/BackButton";
 import EventActivityGallery from "@/components/EventActivityGallery";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -76,19 +76,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
     <div className="min-h-screen overflow-x-hidden bg-white">
       <Navbar />
       <main className="pt-20">
-        <div className="border-b-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 sm:px-6 md:px-8 lg:px-16 xl:px-8">
-          <div className="mx-auto flex w-full max-w-7xl items-center justify-start">
-            <Link
-              href="/event"
-              className="focus-soft inline-flex min-h-11 items-center gap-2 rounded-full border-[1.5px] border-[#04342C] bg-white px-4 text-base font-black text-[#04342C] shadow-[1px_1px_0_#9FE1CB] transition-transform hover:-translate-y-0.5"
-            >
-              <span aria-hidden="true">&larr;</span>
-              <span>Kembali ke Event</span>
-            </Link>
-          </div>
-        </div>
-
-        <section className="relative flex min-h-[60vh] overflow-hidden bg-black">
+        <section className="relative flex min-h-[430px] overflow-hidden bg-[#07110D]">
           {event.gambar?.asset?.url ? (
             <Image
               src={event.gambar.asset.url}
@@ -99,66 +87,75 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               priority
             />
           ) : null}
-          <div className="absolute inset-0 bg-black/45" />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-[#07110D]/80" />
 
-          <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end px-4 pb-12 sm:px-6 md:px-8 md:pb-16 lg:px-16 xl:px-8">
-            <h1 className="font-heading max-w-5xl text-4xl leading-tight text-white md:text-6xl">
-              {event.namaEvent}
-            </h1>
-            <p className="mt-3 text-base font-semibold text-white/80">
-              {event.lokasi}
+          {!event.gambar?.asset?.url ? (
+            <p className="absolute inset-0 flex items-center justify-center text-base font-semibold text-white/10">
+              [ foto event ]
             </p>
+          ) : null}
+
+          <div className="relative z-10 mx-auto flex w-full max-w-[1520px] flex-col px-4 py-6 sm:px-6 md:px-8 lg:px-14 xl:px-16">
+            <BackButton href="/event" label="Kembali ke Event" />
+
+            <div className="mt-auto pb-8 md:pb-9">
+              <h1 className="font-heading max-w-5xl text-4xl leading-tight text-white md:text-5xl">
+                {event.namaEvent}
+              </h1>
+              <p className="mt-2 text-base font-semibold text-white/90">
+                {event.lokasi}
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="grid md:grid-cols-[1fr_280px]">
-          <div className="order-2 border-[#04342C] p-6 md:order-1 md:border-r-[1.5px]">
-            <section>
-              <p className="mb-2 text-base font-black text-[#1D9E75]">
+        <section className="bg-white">
+          <div className="mx-auto grid w-full max-w-[1520px] gap-7 px-4 py-7 sm:px-6 md:grid-cols-[minmax(0,1fr)_300px] md:gap-x-9 md:gap-y-10 md:px-8 lg:grid-cols-[minmax(0,1fr)_330px] lg:px-14 xl:px-16">
+            <section className="md:col-start-1 md:row-start-1">
+              <p className="mb-3 text-base font-black text-[#007A5E]">
                 Tentang Event
               </p>
-              <p className="border-l-[3px] border-[#1D9E75] pl-3 text-[14px] leading-[1.7] text-[var(--color-text-secondary)]">
+              <p className="border-l-[3px] border-[#007A5E] pl-4 text-[14px] leading-[1.7] text-[var(--color-text-secondary)]">
                 {event.deskripsi}
               </p>
             </section>
 
-            <section className="mt-10">
-              <p className="mb-3 border-b-[1.5px] border-[#E1F5EE] pb-1.5 text-base font-black text-[#1D9E75]">
+            <section className="md:col-start-1 md:row-start-2">
+              <p className="mb-3 border-b border-[#E5E5E5] pb-1.5 text-base font-black text-[#007A5E]">
                 Kegiatan Dalam Event
               </p>
 
               <EventActivityGallery kegiatan={event.kegiatan} />
             </section>
-          </div>
 
-          <aside className="order-1 bg-[#E1F5EE] px-4 py-5 md:order-2 md:px-4">
-            <div className="flex flex-col gap-3 md:sticky md:top-5">
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-1">
-                <div className="rounded-lg border-[1.5px] border-[#04342C] bg-white px-3.5 py-3 shadow-[2px_2px_0_#04342C]">
-                  <p className="flex items-center gap-2 text-base font-black text-[#1D9E75]">
-                    <CalendarIcon />
-                    <span>Tanggal</span>
-                  </p>
-                  <p className="font-display mt-2 text-[16px] font-bold leading-tight text-[#04342C]">
-                    {formatDate(event.tanggal)}
-                  </p>
+            <aside className="md:col-start-2 md:row-start-2 md:justify-self-stretch md:pt-[42px]">
+              <div className="flex w-full flex-col gap-3 md:sticky md:top-24">
+                <div className="grid grid-cols-2 gap-3 md:grid-cols-1">
+                  <div className="w-full rounded-lg border border-[#DDDDDD] bg-transparent px-4 py-4 md:min-h-[92px] md:bg-white md:px-5 md:py-4">
+                    <p className="flex items-center gap-2 text-sm font-black text-[#007A5E]">
+                      <CalendarIcon />
+                      <span>Tanggal</span>
+                    </p>
+                    <p className="font-display mt-2 text-[16px] font-bold leading-tight text-[#04342C]">
+                      {formatDate(event.tanggal)}
+                    </p>
+                  </div>
+
+                  <div className="w-full rounded-lg border border-[#DDDDDD] bg-transparent px-4 py-4 md:min-h-[92px] md:bg-white md:px-5 md:py-4">
+                    <p className="flex items-center gap-2 text-sm font-black text-[#007A5E]">
+                      <PinIcon />
+                      <span>Lokasi</span>
+                    </p>
+                    <p className="font-display mt-2 text-[16px] font-bold leading-tight text-[#04342C]">
+                      {event.lokasi}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="rounded-lg border-[1.5px] border-[#04342C] bg-white px-3.5 py-3 shadow-[2px_2px_0_#04342C]">
-                  <p className="flex items-center gap-2 text-base font-black text-[#1D9E75]">
-                    <PinIcon />
-                    <span>Lokasi</span>
-                  </p>
-                  <p className="font-display mt-2 text-[16px] font-bold leading-tight text-[#04342C]">
-                    {event.lokasi}
-                  </p>
-                </div>
+                <ShareEventButton title={event.namaEvent} />
               </div>
-
-              <ShareEventButton title={event.namaEvent} />
-            </div>
-          </aside>
+            </aside>
+          </div>
         </section>
       </main>
       <Footer />

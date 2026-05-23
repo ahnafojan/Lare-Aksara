@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProgramImageCarousel from "@/components/ProgramImageCarousel";
@@ -32,23 +32,9 @@ export default async function ProgramDetailPage({
     <div className="min-h-screen overflow-x-hidden bg-white">
       <Navbar />
       <main className="pt-20">
-        <div className="border-b-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 sm:px-6 md:px-8 lg:px-16 xl:px-8">
-          <div className="mx-auto flex w-full max-w-7xl items-center justify-start">
-            <Link
-              href="/#program"
-              className="focus-soft inline-flex min-h-11 items-center gap-2 rounded-full border-[1.5px] border-[#04342C] bg-white px-4 text-base font-black text-[#04342C] shadow-[1px_1px_0_#9FE1CB] transition-transform hover:-translate-y-0.5"
-            >
-              <span aria-hidden="true">&larr;</span>
-              <span>Kembali ke Program</span>
-            </Link>
-          </div>
-        </div>
-
-        <section className="bg-white px-4 py-10 sm:px-6 sm:py-14 md:px-8 lg:px-16 xl:px-8">
+        <section className="bg-white px-4 py-8 sm:px-6 sm:py-12 md:px-8 lg:px-16 xl:px-8">
           <div className="mx-auto w-full max-w-5xl">
-            <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1D9E75] bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56]">
-              Detail Program
-            </span>
+            <BackButton href="/#program" label="Kembali ke Program" />
             <h1 className="font-heading mt-5 text-4xl leading-tight text-[#04342C] md:text-6xl">
               {program.judul}
             </h1>
