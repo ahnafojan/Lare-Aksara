@@ -19,7 +19,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl items-center gap-8 px-4 pb-14 pt-28 sm:px-6 sm:pb-16 sm:pt-32 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-16 xl:px-8">
         <div className="max-w-4xl text-white">
-          <span className="mb-5 inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
+          <span className="mb-5 inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#F9FAFB] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
             Banjarnegara, 27 Desember 2025
           </span>
           <h1 className="font-heading text-3xl leading-[1.08] text-white sm:text-4xl md:text-5xl lg:text-6xl">
@@ -42,7 +42,7 @@ export default function HeroSection() {
             </a>
             <Link
               href="/#event"
-              className="focus-soft inline-flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-white bg-white px-6 py-3 font-black text-[#04342C] shadow-[2px_2px_0_#9FE1CB] transition-transform hover:-translate-y-0.5"
+              className="focus-soft inline-flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-white bg-white px-6 py-3 font-black text-[#04342C] shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
             >
               Lihat kegiatan
             </Link>

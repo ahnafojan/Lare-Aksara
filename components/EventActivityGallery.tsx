@@ -111,7 +111,7 @@ export default function EventActivityGallery({
           role="dialog"
           aria-modal="true"
           aria-labelledby="activity-modal-title"
-          className="fixed inset-0 z-[80] flex items-center bg-[#04342C]/75 p-3 sm:p-6"
+          className="fixed inset-0 z-[80] flex items-center justify-center p-3 backdrop-blur-md sm:p-6"
         >
           <button
             type="button"
@@ -119,8 +119,8 @@ export default function EventActivityGallery({
             className="absolute inset-0 h-full w-full cursor-default"
             onClick={() => setSelectedActivity(null)}
           />
-          <div className="relative z-10 mx-auto flex max-h-[calc(100dvh-1.5rem)] w-full max-w-[640px] flex-col overflow-hidden rounded-lg border-[1.5px] border-[#04342C] bg-white shadow-[2px_2px_0_#9FE1CB] sm:max-h-[calc(100dvh-3rem)] md:h-[calc(100dvh-3rem)] md:max-h-[760px] md:max-w-5xl md:grid-cols-[1fr_0.92fr] md:flex-row">
-            <div className="relative h-[32dvh] min-h-40 max-h-64 shrink-0 border-b-[1.5px] border-[#04342C] bg-[#E1F5EE] md:h-full md:max-h-none md:min-h-0 md:w-[52%] md:border-b-0 md:border-r-[1.5px]">
+          <div className="relative z-10 flex max-h-[calc(100dvh-1.5rem)] w-full max-w-[640px] flex-col overflow-hidden rounded-lg border-[1.5px] border-[#04342C] bg-white shadow-[2px_2px_0_#04342C] sm:max-h-[calc(100dvh-3rem)] md:h-[calc(100dvh-3rem)] md:max-h-[760px] md:max-w-5xl md:grid-cols-[1fr_0.92fr] md:flex-row">
+            <div className="relative h-[30dvh] min-h-36 max-h-60 shrink-0 border-b-[1.5px] border-[#04342C] bg-[#E1F5EE] md:h-full md:max-h-none md:min-h-0 md:w-[52%] md:border-b-0 md:border-r-[1.5px]">
               {selectedActivity.gambar?.asset?.url ? (
                 <Image
                   src={selectedActivity.gambar.asset.url}
@@ -135,21 +135,21 @@ export default function EventActivityGallery({
             </div>
 
             <div className="flex min-h-0 flex-1 flex-col md:w-[48%]">
-              <div className="flex shrink-0 items-start justify-between gap-3 border-b-[1.5px] border-[#E1F5EE] p-4 sm:p-5">
-                <span className="inline-flex min-h-10 items-center rounded-full border-[1.5px] border-[#1D9E75] bg-[#E1F5EE] px-3 text-sm font-black text-[#0F6E56]">
+              <div className="flex shrink-0 items-start justify-between gap-3 border-b-[1.5px] border-[#04342C] bg-white p-4 sm:p-5">
+                <span className="inline-flex min-h-10 items-center rounded-full border-[1.5px] border-[#0F6E56] bg-[#F9FAFB] px-3 text-sm font-black text-[#0F6E56]">
                   Kegiatan Event
                 </span>
                 <button
                   type="button"
                   aria-label="Tutup"
                   onClick={() => setSelectedActivity(null)}
-                  className="focus-soft inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border-[1.5px] border-[#04342C] bg-white text-lg font-black text-[#04342C] shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
+                  className="focus-soft inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border-[1.5px] border-[#04342C] bg-white text-lg font-black text-[#04342C] shadow-[2px_2px_0_#0F6E56] transition-transform hover:-translate-y-0.5"
                 >
                   X
                 </button>
               </div>
 
-              <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4 sm:px-6 sm:pb-6 sm:pt-5">
+              <div className="min-h-0 flex-1 overflow-y-auto bg-white px-4 pb-5 pt-4 sm:px-6 sm:pb-6 sm:pt-5">
                 <h2
                   id="activity-modal-title"
                   className="font-heading break-words text-2xl leading-tight text-[#04342C] sm:text-3xl"

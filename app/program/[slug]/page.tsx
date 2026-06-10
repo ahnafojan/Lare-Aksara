@@ -41,7 +41,7 @@ export default async function ProgramDetailPage({
 
             <ProgramImageCarousel images={programImages} title={program.judul} />
 
-            <article className="mt-8 rounded-lg border-[1.5px] border-[#04342C] bg-[#E1F5EE] p-5 text-base leading-8 text-[#5F5E5A] shadow-[2px_2px_0_#04342C] sm:p-6 sm:text-lg sm:leading-9">
+            <article className="mt-8 rounded-lg border-[1.5px] border-[#04342C] bg-[#F9FAFB] p-5 text-base leading-8 text-[#5F5E5A] shadow-[2px_2px_0_#04342C] sm:p-6 sm:text-lg sm:leading-9">
               <p className="whitespace-pre-line">{program.deskripsi}</p>
             </article>
           </div>

@@ -10,7 +10,7 @@ export default function BackButton({ href, label }: BackButtonProps) {
     <Link
       href={href}
       className="focus-soft inline-flex h-10 w-fit max-w-full self-start items-stretch overflow-hidden rounded-[5px] text-white transition-opacity hover:opacity-80"
-      style={{ backgroundColor: "var(--color-text-primary, #04342C)" }}
+      style={{ backgroundColor: "var(--color-text-primary, #1D9E75)" }}
     >
       <span
         aria-hidden="true"

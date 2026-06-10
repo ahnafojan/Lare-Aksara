@@ -17,7 +17,7 @@ export default function DonasiSection() {
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1fr_0.78fr] lg:items-center">
         <div className="max-w-3xl">
-          <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#E1F5EE] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
+          <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#F9FAFB] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
             Donasi Buku & Contact Us
           </span>
           <h2 className="font-heading mt-5 text-3xl leading-tight text-white sm:text-4xl md:text-5xl">
@@ -37,7 +37,7 @@ export default function DonasiSection() {
           </div>
           <a
             href="mailto:aksaralare@gmail.com?subject=Donasi%20Buku%20untuk%20Lareaksara"
-            className="focus-soft mt-8 inline-flex min-h-11 w-full items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-6 py-3 font-black text-white shadow-[2px_2px_0_#9FE1CB] transition-transform hover:-translate-y-0.5 lg:w-auto"
+            className="focus-soft mt-8 inline-flex min-h-11 w-full items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-6 py-3 font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5 lg:w-auto"
           >
             Hubungi Kami via Email -&gt;
           </a>

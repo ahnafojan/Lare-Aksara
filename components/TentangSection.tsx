@@ -206,7 +206,7 @@ export default function TentangSection() {
               {tujuan.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3 rounded-lg border-[1.5px] border-[#04342C] bg-[#E1F5EE] px-4 py-3 text-[#04342C] shadow-[1px_1px_0_#9FE1CB]"
+                  className="flex items-start gap-3 rounded-lg border-[1.5px] border-[#04342C] bg-[#F9FAFB] px-4 py-3 text-[#04342C] "
                 >
                   <span
                     aria-hidden="true"

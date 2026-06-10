@@ -36,7 +36,7 @@ export default function EventSection({ events }: EventSectionProps) {
               Agenda temu, baca, gambar, dan bernyanyi.
             </h2>
           </div>
-          <div className="hidden rounded-lg border-[1.5px] border-[#04342C] bg-[#9FE1CB] px-5 py-4 font-heading text-lg text-[#04342C] shadow-[2px_2px_0_#04342C] lg:block">
+          <div className="hidden rounded-lg border-[1.5px] border-[#04342C] bg-[#F9FAFB] px-5 py-4 font-heading text-lg text-[#04342C] shadow-[2px_2px_0_#04342C] lg:block">
             Semua kegiatan
           </div>
         </div>
