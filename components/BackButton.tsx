@@ -9,18 +9,15 @@ export default function BackButton({ href, label }: BackButtonProps) {
   return (
     <Link
       href={href}
-      className="focus-soft inline-flex h-10 w-fit max-w-full self-start items-stretch overflow-hidden rounded-[5px] text-white transition-opacity hover:opacity-80"
-      style={{ backgroundColor: "var(--color-text-primary, #1D9E75)" }}
+      className="focus-soft inline-flex min-h-11 w-fit max-w-full self-start items-center gap-2 rounded-lg border-[1.5px] border-[#04342C] bg-white px-4 py-2 text-base font-black text-[#04342C] shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
     >
       <span
         aria-hidden="true"
-        className="flex h-10 w-10 shrink-0 items-center justify-center bg-white/15 text-[20px] leading-none"
+        className="text-xl leading-none"
       >
         &larr;
       </span>
-      <span className="flex h-10 items-center px-4 text-[13px] font-semibold leading-none">
-        {label}
-      </span>
+      <span>{label}</span>
     </Link>
   );
 }

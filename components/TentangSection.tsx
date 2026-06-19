@@ -8,17 +8,108 @@ function BookStackIllustration() {
     <svg
       aria-hidden="true"
       viewBox="0 0 220 160"
-      className="h-auto w-full max-w-xs"
+      className="mx-auto block h-auto w-full"
       fill="none"
     >
-      <rect x="28" y="98" width="156" height="24" rx="7" fill="#9FE1CB" stroke="#04342C" strokeWidth="1.5" />
-      <rect x="42" y="74" width="146" height="24" rx="7" fill="#FFFFFF" stroke="#04342C" strokeWidth="1.5" />
-      <rect x="32" y="50" width="132" height="24" rx="7" fill="#5DCAA5" stroke="#04342C" strokeWidth="1.5" />
-      <path d="M72 38C91 22 111 24 130 42V112C111 96 91 94 72 108V38Z" fill="#E1F5EE" stroke="#04342C" strokeWidth="1.5" />
-      <path d="M130 42C148 24 168 22 188 38V108C168 94 148 96 130 112V42Z" fill="#FFFFFF" stroke="#04342C" strokeWidth="1.5" />
-      <path d="M130 42V112" stroke="#04342C" strokeWidth="1.5" />
-      <path d="M86 48C96 43 106 44 116 50" stroke="#04342C" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M144 50C154 44 164 43 174 48" stroke="#04342C" strokeWidth="1.5" strokeLinecap="round" />
+      <rect
+        x="33"
+        y="119"
+        width="154"
+        height="18"
+        rx="6"
+        fill="#F4C95D"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M53 47C72 33 93 35 110 54V126C91 108 72 106 53 118V47Z"
+        fill="#FFF7D6"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M110 54C127 35 149 33 168 47V118C149 106 129 108 110 126V54Z"
+        fill="#FFFFFF"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+      />
+      <path d="M110 54V126" stroke="#2B2118" strokeWidth="1.5" />
+      <path
+        d="M66 58C78 52 91 53 102 61"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M124 61C136 53 149 52 160 58"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M70 82C83 77 95 78 105 86"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M128 86C139 78 153 77 164 83"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <ellipse
+        cx="76"
+        cy="99"
+        rx="7"
+        ry="6"
+        fill="#A9C7E8"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        transform="rotate(-18 76 99)"
+      />
+      <path
+        d="M82 97V65L101 60V91"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <ellipse
+        cx="101"
+        cy="93"
+        rx="7"
+        ry="6"
+        fill="#F7D6C5"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        transform="rotate(-18 101 93)"
+      />
+      <path
+        d="M82 69L101 64"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <ellipse
+        cx="151"
+        cy="79"
+        rx="7"
+        ry="6"
+        fill="#F4C95D"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        transform="rotate(-18 151 79)"
+      />
+      <path
+        d="M157 77V45C165 47 171 51 174 57"
+        stroke="#2B2118"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="54" cy="35" r="5" fill="#F7D6C5" stroke="#2B2118" strokeWidth="1.5" />
+      <circle cx="176" cy="32" r="4" fill="#A9C7E8" stroke="#2B2118" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -49,12 +140,8 @@ function MobileFoldCard({
 
   return (
     <article
-      className={`soft-card relative p-5 pl-6 sm:p-6 sm:pl-7 md:p-8 ${className}`}
+      className={`soft-card relative p-5 sm:p-6 md:p-8 ${className}`}
     >
-      <span
-        aria-hidden="true"
-        className="absolute bottom-[1.5px] left-[1.5px] top-[1.5px] block w-2 rounded-l-[5px] bg-[#9FE1CB] lg:hidden"
-      />
       <h3 className="font-heading hidden text-2xl text-[#04342C] lg:block">
         {title}
       </h3>
@@ -119,11 +206,11 @@ export default function TentangSection() {
   return (
     <section id="tentang" className="bg-white px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-16 xl:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:gap-12">
-        <div className="lg:sticky lg:top-28 lg:pt-2">
+        <div className="text-center lg:sticky lg:top-28 lg:pt-2 lg:text-left">
           <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1a1a1a] bg-[#04342C] px-4 py-2 text-base font-black text-[#FAF9F6]">
             Tentang
           </span>
-          <h2 className="font-heading mt-5 max-w-xl text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl lg:text-6xl">
+          <h2 className="font-heading mx-auto mt-5 max-w-xl text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl lg:mx-0 lg:text-6xl">
             Ruang kata, nada, dan warna untuk anak.
           </h2>
           <p className="mt-5 hidden max-w-md text-base leading-8 text-[#5F5E5A] lg:block">
@@ -131,7 +218,7 @@ export default function TentangSection() {
             kreatif yang merawat keberanian anak untuk membaca, bernyanyi,
             menggambar, dan bercerita.
           </p>
-          <div className="mt-8 lg:max-w-sm">
+          <div className="mx-auto mt-8 w-full max-w-[250px] sm:max-w-xs md:max-w-sm lg:mx-0 lg:max-w-sm">
             <BookStackIllustration />
           </div>
         </div>

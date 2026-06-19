@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import ProgramSection from "@/components/ProgramSection";
-import StatsBar from "@/components/StatsBar";
+import ScrollReveal from "@/components/ScrollReveal";
 import TentangSection from "@/components/TentangSection";
 import { getEvents, getPrograms } from "@/sanity/lib/fetchers";
 
@@ -21,11 +21,18 @@ export default async function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <StatsBar />
-        <TentangSection />
-        <ProgramSection programs={programs} />
-        <EventSection events={events} />
-        <DonasiSection />
+        <ScrollReveal>
+          <TentangSection />
+        </ScrollReveal>
+        <ScrollReveal delay={80}>
+          <ProgramSection programs={programs} />
+        </ScrollReveal>
+        <ScrollReveal delay={120}>
+          <EventSection events={events} />
+        </ScrollReveal>
+        <ScrollReveal delay={160}>
+          <DonasiSection />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>

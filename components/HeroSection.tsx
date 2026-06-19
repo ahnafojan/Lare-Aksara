@@ -18,14 +18,14 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[#04342C]/55" />
 
       <div className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl items-center gap-8 px-4 pb-14 pt-28 sm:px-6 sm:pb-16 sm:pt-32 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-16 xl:px-8">
-        <div className="max-w-4xl text-white">
+        <div className="max-w-4xl text-center text-white lg:text-left">
           <span className="mb-5 inline-flex min-h-11 items-center rounded-full border-[1.5px] border-white bg-[#F9FAFB] px-4 py-2 text-base font-black text-[#0F6E56] shadow-[2px_2px_0_#04342C]">
             Banjarnegara, 27 Desember 2025
           </span>
-          <h1 className="font-heading text-3xl leading-[1.08] text-white sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="font-heading text-[2rem] leading-[1.05] text-white sm:text-4xl md:text-5xl lg:text-6xl">
             Meromantisasi Literasi & Kesenian Pada Anak-anak
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-white sm:text-lg">
+          <p className="mx-auto mt-6 max-w-[34rem] text-base leading-8 text-white sm:text-lg lg:mx-0 lg:max-w-3xl">
             Lare Aksara adalah komunitas literasi indie yang berfokus pada anak
             dan peduli terhadap perkembangan kesenian anak. Kami menghadirkan
             ruang kreatif melalui literasi, musik, dan seni rupa sebagai sarana
@@ -33,16 +33,16 @@ export default function HeroSection() {
             Desember 2025.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 lg:flex-row">
+          <div className="mx-auto mt-8 flex w-full max-w-[18.5rem] flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:items-center lg:mx-0">
             <a
               href={joinMailHref}
-              className="focus-soft inline-flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-6 py-3 font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
+              className="focus-soft inline-flex min-h-11 w-full items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-5 py-3 text-center text-sm font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5 sm:w-auto sm:px-6 sm:text-base"
             >
               Gabung sekarang -&gt;
             </a>
             <Link
               href="/#event"
-              className="focus-soft inline-flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-white bg-white px-6 py-3 font-black text-[#04342C] shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5"
+              className="focus-soft inline-flex min-h-11 w-full items-center justify-center rounded-lg border-[1.5px] border-white bg-white px-5 py-3 text-center text-sm font-black text-[#04342C] shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5 sm:w-auto sm:px-6 sm:text-base"
             >
               Lihat kegiatan
             </Link>

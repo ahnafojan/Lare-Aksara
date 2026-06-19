@@ -88,13 +88,31 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="focus-soft inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-white text-2xl font-black text-[#04342C] shadow-[2px_2px_0_#9FE1CB] md:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-white text-[#04342C] transition-[background-color,transform] hover:bg-[#F9FAFB] active:translate-x-[1px] active:translate-y-[1px] focus-visible:outline-[2px] focus-visible:outline-offset-2 focus-visible:outline-[#04342C] md:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? "Tutup menu" : "Buka menu"}
           onClick={() => setIsOpen((value) => !value)}
         >
-          {isOpen ? "×" : "☰"}
+          <span aria-hidden="true" className="relative h-5 w-5">
+            <span
+              className={`absolute left-0 h-[2px] w-5 rounded-full bg-[#04342C] transition duration-200 ${
+                isOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-[3px]"
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-1/2 h-[2px] w-5 -translate-y-1/2 rounded-full bg-[#04342C] transition duration-200 ${
+                isOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-0 h-[2px] w-5 rounded-full bg-[#04342C] transition duration-200 ${
+                isOpen
+                  ? "top-1/2 -translate-y-1/2 -rotate-45"
+                  : "bottom-[3px]"
+              }`}
+            />
+          </span>
         </button>
 
         <div className="hidden items-center gap-7 md:flex">
@@ -120,14 +138,14 @@ export default function Navbar() {
       {isOpen ? (
         <div
           id="mobile-menu"
-          className="absolute inset-x-0 top-full border-b-[1.5px] border-[#04342C] bg-white px-4 py-4 shadow-[0_2px_0_#9FE1CB] md:hidden"
+          className="absolute right-4 top-full mt-2 w-[min(calc(100vw-2rem),20rem)] rounded-lg border-[1.5px] border-[#04342C] bg-white p-3 shadow-[2px_2px_0_#04342C] sm:right-6 md:hidden"
         >
-          <div className="mx-auto grid w-full max-w-7xl gap-2">
+          <div className="grid gap-2">
             {menuItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="focus-soft flex min-h-11 items-center rounded-lg border-[1.5px] border-[#04342C] bg-white px-4 font-bold text-[#04342C]"
+                className="flex min-h-11 items-center rounded-md border-[1.5px] border-[#04342C] bg-white px-4 text-sm font-black text-[#04342C] transition-[background-color,transform] hover:bg-[#E1F5EE] active:translate-x-[1px] active:translate-y-[1px] focus-visible:outline-[2px] focus-visible:outline-offset-2 focus-visible:outline-[#04342C]"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
@@ -135,7 +153,7 @@ export default function Navbar() {
             ))}
             <a
               href={joinMailHref}
-              className="focus-soft mt-2 flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-4 font-black text-white shadow-[2px_2px_0_#04342C]"
+              className="mt-2 flex min-h-11 items-center justify-center rounded-lg border-[1.5px] border-[#04342C] bg-[#1D9E75] px-4 text-sm font-black text-white shadow-[2px_2px_0_#04342C] transition-transform hover:-translate-y-0.5 focus-visible:outline-[2px] focus-visible:outline-offset-2 focus-visible:outline-[#04342C]"
               onClick={() => setIsOpen(false)}
             >
               Bergabung
