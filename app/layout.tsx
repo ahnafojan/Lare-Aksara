@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { absoluteUrl, serializeJsonLd, siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const inter = localFont({
@@ -17,9 +18,67 @@ const playfairDisplay = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Lare Aksara | Literasi & Kesenian Anak",
-  description:
-    "Komunitas literasi indie untuk anak-anak di Banjarnegara melalui buku, musik, dan seni rupa.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "Lare Aksara | Literasi & Kesenian Anak",
+    template: "%s | Lare Aksara",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "Lare Aksara",
+    "literasi anak",
+    "kesenian anak",
+    "komunitas Banjarnegara",
+    "buku anak",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: "/",
+    siteName: siteConfig.name,
+    title: "Lare Aksara | Literasi & Kesenian Anak",
+    description: siteConfig.description,
+    images: [
+      {
+        url: "/images/hero.jpg",
+        alt: "Kegiatan Lare Aksara bersama anak-anak",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lare Aksara | Literasi & Kesenian Anak",
+    description: siteConfig.description,
+    images: ["/images/hero.jpg"],
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  logo: absoluteUrl("/images/logo.png"),
+  description: siteConfig.description,
+  areaServed: {
+    "@type": "City",
+    name: "Banjarnegara",
+  },
 };
 
 export default function RootLayout({
@@ -34,6 +93,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationJsonLd) }}
+        />
         {children}
       </body>
     </html>

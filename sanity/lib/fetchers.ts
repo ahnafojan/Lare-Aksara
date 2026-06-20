@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { client } from "@/sanity/lib/client";
 import {
   EVENT_BY_SLUG_QUERY,
@@ -11,16 +12,18 @@ function warnSanityFetch(label: string, error: unknown) {
   console.warn(`[sanity] Failed to fetch ${label}. Showing fallback content.`, error);
 }
 
-export async function getPrograms(): Promise<Program[]> {
+export const getPrograms = cache(async function getPrograms(): Promise<Program[]> {
   try {
     return await client.fetch<Program[]>(PROGRAMS_QUERY);
   } catch (error) {
     warnSanityFetch("programs", error);
     return [];
   }
-}
+});
 
-export async function getProgramBySlug(slug: string): Promise<Program | null> {
+export const getProgramBySlug = cache(async function getProgramBySlug(
+  slug: string,
+): Promise<Program | null> {
   try {
     return await client.fetch<Program | null>(PROGRAM_BY_SLUG_QUERY, {
       slug,
@@ -29,18 +32,20 @@ export async function getProgramBySlug(slug: string): Promise<Program | null> {
     warnSanityFetch(`program "${slug}"`, error);
     return null;
   }
-}
+});
 
-export async function getEvents(): Promise<EventSummary[]> {
+export const getEvents = cache(async function getEvents(): Promise<EventSummary[]> {
   try {
     return await client.fetch<EventSummary[]>(EVENTS_QUERY);
   } catch (error) {
     warnSanityFetch("events", error);
     return [];
   }
-}
+});
 
-export async function getEventBySlug(slug: string): Promise<EventDetail | null> {
+export const getEventBySlug = cache(async function getEventBySlug(
+  slug: string,
+): Promise<EventDetail | null> {
   try {
     return await client.fetch<EventDetail | null>(EVENT_BY_SLUG_QUERY, {
       slug,
@@ -49,4 +54,4 @@ export async function getEventBySlug(slug: string): Promise<EventDetail | null> 
     warnSanityFetch(`event "${slug}"`, error);
     return null;
   }
-}
+});

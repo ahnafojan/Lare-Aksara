@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
@@ -5,6 +6,7 @@ import EventActivityGallery from "@/components/EventActivityGallery";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ShareEventButton from "@/components/ShareEventButton";
+import { absoluteUrl, createExcerpt, serializeJsonLd, siteConfig } from "@/lib/site";
 import { getEventBySlug } from "@/sanity/lib/fetchers";
 
 type EventDetailPageProps = {
@@ -29,6 +31,51 @@ function formatDate(date: string) {
   }
 
   return dateFormatter.format(value);
+}
+
+export async function generateMetadata({
+  params,
+}: EventDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const event = await getEventBySlug(slug);
+
+  if (!event) {
+    return {
+      title: "Event tidak ditemukan",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const description = createExcerpt(event.deskripsi);
+  const imageUrl = event.gambar?.asset?.url ?? absoluteUrl("/images/hero.jpg");
+  const eventUrl = `/event/${encodeURIComponent(slug)}`;
+
+  return {
+    title: event.namaEvent,
+    description,
+    alternates: {
+      canonical: eventUrl,
+    },
+    openGraph: {
+      type: "website",
+      locale: siteConfig.locale,
+      url: eventUrl,
+      title: event.namaEvent,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          alt: `Dokumentasi ${event.namaEvent}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: event.namaEvent,
+      description,
+      images: [imageUrl],
+    },
+  };
 }
 
 function CalendarIcon() {
@@ -72,15 +119,38 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
     notFound();
   }
 
+  const eventJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.namaEvent,
+    description: event.deskripsi,
+    startDate: event.tanggal,
+    url: absoluteUrl(`/event/${slug}`),
+    image: event.gambar?.asset?.url ? [event.gambar.asset.url] : undefined,
+    location: {
+      "@type": "Place",
+      name: event.lokasi,
+    },
+    organizer: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(eventJsonLd) }}
+      />
       <Navbar />
       <main className="pt-20">
         <section className="relative flex min-h-[430px] overflow-hidden bg-[#07110D]">
           {event.gambar?.asset?.url ? (
             <Image
               src={event.gambar.asset.url}
-              alt=""
+              alt={`Dokumentasi ${event.namaEvent}`}
               fill
               className="object-cover"
               sizes="100vw"
@@ -136,9 +206,12 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                       <CalendarIcon />
                       <span>Tanggal</span>
                     </p>
-                    <p className="font-display mt-2 text-[16px] font-bold leading-tight text-[#04342C]">
+                    <time
+                      dateTime={event.tanggal}
+                      className="font-display mt-2 block text-[16px] font-bold leading-tight text-[#04342C]"
+                    >
                       {formatDate(event.tanggal)}
-                    </p>
+                    </time>
                   </div>
 
                   <div className="w-full rounded-lg border border-[#DDDDDD] bg-transparent px-4 py-4 md:min-h-[92px] md:bg-white md:px-5 md:py-4">

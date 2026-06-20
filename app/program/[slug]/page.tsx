@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProgramImageCarousel from "@/components/ProgramImageCarousel";
+import { absoluteUrl, createExcerpt, siteConfig } from "@/lib/site";
 import { getProgramBySlug } from "@/sanity/lib/fetchers";
 import type { SanityImage } from "@/types";
 
@@ -13,6 +15,51 @@ type ProgramDetailPageProps = {
 };
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: ProgramDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const program = await getProgramBySlug(slug);
+
+  if (!program) {
+    return {
+      title: "Program tidak ditemukan",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const description = createExcerpt(program.deskripsi);
+  const imageUrl = program.gambar?.asset?.url ?? absoluteUrl("/images/hero.jpg");
+  const programUrl = `/program/${encodeURIComponent(slug)}`;
+
+  return {
+    title: program.judul,
+    description,
+    alternates: {
+      canonical: programUrl,
+    },
+    openGraph: {
+      type: "website",
+      locale: siteConfig.locale,
+      url: programUrl,
+      title: program.judul,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          alt: `Program ${program.judul}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: program.judul,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
 
 export default async function ProgramDetailPage({
   params,

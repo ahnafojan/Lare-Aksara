@@ -3,6 +3,7 @@ import {groq} from 'next-sanity'
 export const PROGRAMS_QUERY = groq`
   *[_type == "program"] | order(judul asc) {
     _id,
+    _updatedAt,
     judul,
     deskripsi,
     slug,
@@ -18,6 +19,7 @@ export const PROGRAMS_QUERY = groq`
 export const PROGRAM_BY_SLUG_QUERY = groq`
   *[_type == "program" && slug.current == $slug][0] {
     _id,
+    _updatedAt,
     judul,
     deskripsi,
     slug,
@@ -39,6 +41,7 @@ export const PROGRAM_BY_SLUG_QUERY = groq`
 export const EVENTS_QUERY = groq`
   *[_type == "event"] | order(tanggal desc) {
     _id,
+    _updatedAt,
     namaEvent,
     tanggal,
     lokasi,
@@ -56,6 +59,7 @@ export const EVENTS_QUERY = groq`
 export const EVENT_BY_SLUG_QUERY = groq`
   *[_type == "event" && slug.current == $slug][0] {
     _id,
+    _updatedAt,
     namaEvent,
     tanggal,
     lokasi,

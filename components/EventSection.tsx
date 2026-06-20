@@ -4,6 +4,7 @@ import type { EventSummary } from "@/types";
 
 type EventSectionProps = {
   events: EventSummary[];
+  headingAs?: "h1" | "h2";
 };
 
 function EmptyEventImage() {
@@ -23,7 +24,10 @@ function EmptyEventImage() {
   );
 }
 
-export default function EventSection({ events }: EventSectionProps) {
+export default function EventSection({
+  events,
+  headingAs: Heading = "h2",
+}: EventSectionProps) {
   return (
     <section id="event" className="bg-white px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-16 xl:px-8">
       <div className="mx-auto w-full max-w-7xl">
@@ -32,9 +36,9 @@ export default function EventSection({ events }: EventSectionProps) {
             <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1a1a1a] bg-[#04342C] px-4 py-2 text-base font-black text-[#FAF9F6]">
               Event
             </span>
-            <h2 className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl">
+            <Heading className="font-heading mt-5 text-3xl leading-tight text-[#04342C] sm:text-4xl md:text-5xl">
               Agenda temu, baca, gambar, dan bernyanyi.
-            </h2>
+            </Heading>
           </div>
           <div className="hidden rounded-lg border-[1.5px] border-[#04342C] bg-[#F9FAFB] px-5 py-4 font-heading text-lg text-[#04342C] shadow-[2px_2px_0_#04342C] lg:block">
             Semua kegiatan
