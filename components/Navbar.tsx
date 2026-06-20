@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 const menuItems = [
   { label: "Tentang", href: "/#tentang" },
-  { label: "Program", href: "/#program" },
+  { label: "Program", href: "/program" },
   { label: "Event", href: "/event" },
   { label: "Donasi", href: "/#donasi" },
 ];

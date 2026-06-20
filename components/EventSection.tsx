@@ -28,6 +28,8 @@ export default function EventSection({
   events,
   headingAs: Heading = "h2",
 }: EventSectionProps) {
+  const hasMultipleEvents = events.length > 1;
+
   return (
     <section id="event" className="bg-white px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-16 xl:px-8">
       <div className="mx-auto w-full max-w-7xl">
@@ -45,7 +47,13 @@ export default function EventSection({
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-6">
+        <div
+          className={
+            hasMultipleEvents
+              ? "-mr-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pr-4 sm:-mr-6 sm:pr-6 md:-mr-8 md:pr-8 lg:-mr-16 lg:mt-10 lg:gap-6 lg:pr-16 xl:-mr-8 xl:pr-8"
+              : "mx-auto mt-8 flex justify-center lg:mt-10"
+          }
+        >
           {events.length > 0 ? (
             events.map((event) => {
               const href = event.slug?.current
@@ -56,7 +64,7 @@ export default function EventSection({
                 <Link
                   key={event._id}
                   href={href}
-                  className="focus-soft soft-card group flex min-h-11 flex-col overflow-hidden bg-white transition-transform hover:-translate-y-0.5"
+                  className="focus-soft soft-card group flex h-[25rem] w-[min(84vw,20rem)] shrink-0 snap-start flex-col overflow-hidden bg-white transition-transform hover:-translate-y-0.5"
                 >
                   <div className="relative aspect-[16/10] border-b-[1.5px] border-[#04342C]">
                     {event.gambar?.asset?.url ? (
@@ -65,15 +73,15 @@ export default function EventSection({
                         alt={event.namaEvent}
                         fill
                         className="object-cover"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        sizes="20rem"
                       />
                     ) : (
                       <EmptyEventImage />
                     )}
                   </div>
 
-                  <div className="flex flex-1 flex-col p-4 lg:p-5">
-                    <h3 className="font-heading text-xl leading-tight text-[#04342C] sm:text-2xl">
+                  <div className="flex min-h-0 flex-1 flex-col p-4 lg:p-5">
+                    <h3 className="font-heading line-clamp-2 text-xl leading-tight text-[#04342C] sm:text-2xl">
                       {event.namaEvent}
                     </h3>
                     <p className="mt-2 line-clamp-3 text-base leading-7 text-[#5F5E5A]">
@@ -87,7 +95,7 @@ export default function EventSection({
               );
             })
           ) : (
-            <div className="soft-card bg-[#E1F5EE] p-6 text-[#5F5E5A] sm:col-span-2 lg:col-span-3">
+            <div className="soft-card bg-[#E1F5EE] p-6 text-[#5F5E5A]">
               Event Lare Aksara akan segera tampil di sini.
             </div>
           )}

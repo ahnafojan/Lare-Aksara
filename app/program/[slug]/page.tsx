@@ -81,8 +81,12 @@ export default async function ProgramDetailPage({
       <main className="pt-20">
         <section className="bg-white px-4 py-8 sm:px-6 sm:py-12 md:px-8 lg:px-16 xl:px-8">
           <div className="mx-auto w-full max-w-5xl">
-            <BackButton href="/#program" label="Kembali ke Program" />
-            <h1 className="font-heading mt-5 text-4xl leading-tight text-[#04342C] md:text-6xl">
+            <BackButton
+              href="/program"
+              label="Kembali ke Program"
+              desktopOnly
+            />
+            <h1 className="font-heading mt-0 text-4xl leading-tight text-[#04342C] md:mt-5 md:text-6xl">
               {program.judul}
             </h1>
 

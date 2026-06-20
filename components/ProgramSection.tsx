@@ -4,6 +4,7 @@ import type { Program } from "@/types";
 
 type ProgramSectionProps = {
   programs: Program[];
+  headingAs?: "h1" | "h2";
 };
 
 function EmptyProgramImage() {
@@ -24,7 +25,10 @@ function EmptyProgramImage() {
   );
 }
 
-export default function ProgramSection({ programs }: ProgramSectionProps) {
+export default function ProgramSection({
+  programs,
+  headingAs: Heading = "h2",
+}: ProgramSectionProps) {
   return (
     <section
       id="program"
@@ -44,12 +48,12 @@ export default function ProgramSection({ programs }: ProgramSectionProps) {
           <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#1a1a1a] bg-[#04342C] px-4 py-2 text-base font-black text-[#FAF9F6]">
             Program
           </span>
-          <h2 className="font-heading mt-5 text-3xl leading-tight text-white sm:text-4xl md:text-5xl">
+          <Heading className="font-heading mt-5 text-3xl leading-tight text-white sm:text-4xl md:text-5xl">
             Kegiatan yang menumbuhkan rasa ingin tahu.
-          </h2>
+          </Heading>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:mt-10 lg:gap-6">
+        <div className="-mr-4 mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 pr-4 sm:-mr-6 sm:gap-4 sm:pr-6 md:-mr-8 md:pr-8 lg:-mr-16 lg:mt-10 lg:gap-6 lg:pr-16 xl:-mr-8 xl:pr-8">
           {programs.length > 0 ? (
             programs.map((program) => {
               const href = program.slug?.current
@@ -60,29 +64,29 @@ export default function ProgramSection({ programs }: ProgramSectionProps) {
                 <Link
                   key={program._id}
                   href={href}
-                  className="focus-soft soft-card group flex min-h-11 flex-col overflow-hidden bg-white transition-transform hover:-translate-y-0.5"
+                  className="focus-soft soft-card group flex aspect-square w-[78vw] max-w-[19rem] shrink-0 snap-start flex-col overflow-hidden bg-white transition-transform hover:-translate-y-0.5"
                 >
-                  <div className="relative aspect-[4/3] border-b-[1.5px] border-[#04342C]">
+                  <div className="relative basis-[44%] shrink-0 border-b-[1.5px] border-[#04342C]">
                     {program.gambar?.asset?.url ? (
                       <Image
                         src={program.gambar.asset.url}
                         alt={program.judul}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                        sizes="(min-width: 768px) 33vw, 50vw"
+                        sizes="(min-width: 640px) 19rem, 78vw"
                       />
                     ) : (
                       <EmptyProgramImage />
                     )}
                   </div>
-                  <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-5">
-                    <h3 className="font-heading text-xl leading-tight text-[#04342C] sm:text-2xl">
+                  <div className="flex min-h-0 flex-1 flex-col p-3 sm:p-4 lg:p-5">
+                    <h3 className="font-heading line-clamp-2 text-xl leading-tight text-[#04342C] sm:text-2xl">
                       {program.judul}
                     </h3>
-                    <p className="mt-2 line-clamp-3 text-base leading-7 text-[#5F5E5A] lg:mt-3">
+                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#5F5E5A] sm:text-base sm:leading-7">
                       {program.deskripsi}
                     </p>
-                    <span className="mt-auto pt-4 text-sm font-black text-[#1D9E75] group-hover:text-[#04342C] sm:text-base">
+                    <span className="mt-auto pt-3 text-sm font-black text-[#1D9E75] group-hover:text-[#04342C] sm:text-base">
                       Lihat detail -&gt;
                     </span>
                   </div>
@@ -90,7 +94,7 @@ export default function ProgramSection({ programs }: ProgramSectionProps) {
               );
             })
           ) : (
-            <div className="soft-card col-span-2 bg-white p-6 text-base text-[#5F5E5A] md:col-span-3">
+            <div className="soft-card bg-white p-6 text-base text-[#5F5E5A]">
               Program Lare Aksara akan segera tampil di sini.
             </div>
           )}

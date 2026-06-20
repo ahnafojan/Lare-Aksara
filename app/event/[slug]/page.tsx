@@ -166,7 +166,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
           ) : null}
 
           <div className="relative z-10 mx-auto flex w-full max-w-[1520px] flex-col px-4 py-6 sm:px-6 md:px-8 lg:px-14 xl:px-16">
-            <BackButton href="/event" label="Kembali ke Event" />
+            <BackButton href="/event" label="Kembali ke Event" desktopOnly />
 
             <div className="mt-auto pb-8 md:pb-9">
               <h1 className="font-heading max-w-5xl text-4xl leading-tight text-white md:text-5xl">
